@@ -1,19 +1,29 @@
 import './index.css';
-import { useState } from 'react';
 import { Button,Input,Form,Dialog } from 'antd-mobile';
-// import { Form } from 'antd-mobile/es/components/form/form';
+import { loginService } from '../../services/login';
+
 const initialValues = {
-  username: 'hhhh',
-  password: '123'
+  username: 'hhhhhh',
+  password: '12345'
 }
 const Login = () => {
-  const [form] = Form.useForm()
-  const onSubmit = () => {
+  const [form] = Form.useForm();
+
+  const onSubmit = async () => {
     const values = form.getFieldsValue()
+    const res = await loginService(values.username,values.password);
+    if (res && res.length > 0){
+      Dialog.alert({
+        content: 'success',
+      });
+      return;
+    }
     Dialog.alert({
-      content: JSON.stringify(values),
-    })
-  }
+      content: 'fail',
+    });
+    
+  };
+
   return (
     <div className="login">
         <Form 
