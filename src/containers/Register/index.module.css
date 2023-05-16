@@ -1,18 +1,5 @@
 @value tBlue #1d9bf0;
-.header{
-    height: 50px;
-    text-align: center;
-    background-color: #ccc;}
-.twitterLogo {
-        height: 30px;
-        margin-top: 10px;
-    }
-.closeIcon{
-    position: absolute;
-    top: 15px;
-    left: 20px;
-    font-size: 20px;   
-    }
+@value tGray #868a8c;
 
 .formTitle {
         font-size:  25px;
@@ -26,12 +13,7 @@
     }
 
 .input {
-    border: solid 1px #cfd9de;
-    border-radius: 5px;
-    height: 53px;
-    padding: 5px 10px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    composes: input from '/src/common.module.css'
 }
 
 .changeTypeButton {
@@ -45,21 +27,19 @@
     font-size: 700;
 }
 
-.birthdayInput {
-    composes: input;
-    margin-top: 10px;
-}
-.datepickerIcon {
-    height: 24px;
-    float: right;
-}
-.datepickerPlaceHolder {
-    height: 30px;
-    line-height: 30px;
-    font-size: 15px;
+.footer {
+    position: fixed;
+    text-align: center;
+    bottom: 20px;
+    width: 100%;
 }
 
-
-.birthdayTitleItem{
-    color: tBlue;
+.footerButton {
+    margin: 0 auto;
+    border-radius: 50px;
+    background-color: tGray;
+    color: #fff;
+    font-size: 16px;
+    width: 80%;
+    height: 50px;
 }
