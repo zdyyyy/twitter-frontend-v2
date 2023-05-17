@@ -1,6 +1,12 @@
 @value tBlue #1d9bf0;
 @value tGray #868a8c;
 
+
+.formContainer {
+    :global(.adm-list-body) {
+        background-color: red;
+    }
+}
 .formTitle {
         font-size:  25px;
         font-weight: 700;

@@ -8,6 +8,8 @@
         }
     },
     "rules":{
+        "jsx-ally/no-static-element-interactions":0,
+        "jsx-ally/click-events-have-key-events":0,
         "react/jsx-filename-extension": [1,{"extensions":[".js"]}],
         "react/react-in-jsx-scope":0,
         "react/function-component-definition": 0
@@ -20,7 +22,7 @@
             "alias": {
                 "map": [
                     ["@components","./src/components"],
-                    ["@assets","./src/assets"],
+                    ["@assets","./src/assets"]
                 ]
             }
         }
