@@ -80,3 +80,6 @@ mock the real twitter sign up page
 1.将设计好的UI划分为组件层级
 2.用React创建静态版本
 
+## 工程化的配置信息
+-craco.config.js: 配置webpack的文件快捷方式
+-jsconfig.json: 给vscode使用的js相关配置文件
