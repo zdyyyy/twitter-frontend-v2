@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Header from '@components/Header';
 import DatePickerInput from '@components/DatePickerInput';
 import style from './index.module.scss';
+import TInput from '@components/TInput'; 
 
 const ACCOUNT_TYPE = {
     TEL: 'TEL',
@@ -21,14 +22,14 @@ const Register = () =>{
         
     });
     const [accountType,setAccountType] = useState(ACCOUNT_TYPE.TEL);
-    const onAccountTypeChange = (e) => {
+    const onAccountTypeChange = () => {
         if (accountType === ACCOUNT_TYPE.TEL){
             setAccountType(ACCOUNT_TYPE.EMAIL);
             return;
-        } else {
-            setAccountType(ACCOUNT_TYPE.TEL);
-        }
-    }
+        } 
+        setAccountType(ACCOUNT_TYPE.TEL);
+        
+    };
 
     const onClickNextStep = () => {
         const validate = form.validateFields();
@@ -46,18 +47,15 @@ const Register = () =>{
         <div className={style.form}>
             <div className = {style.formTitle}>Create your account</div>
             <Form form = {form} initialValues={formData} className = {style.formContainer}>
-                <Form.Item 
-                    name='name'
-                    rules = {[{required:true, message:"Name should not be empty"}]}
-                    >
-                    <Input placeholder='name' className = {style.input}/>
+                <Form.Item name='name' rules = {[{required:true, message:"Name should not be empty"}]}>
+                    <TInput length = {5} label = 'name'/>
                 </Form.Item>
                 
                 {accountType === ACCOUNT_TYPE.TEL && (
                 <Form.Item 
                     name = 'tel'
                     rules = {[{required:true, message:"Tel should not be empty"}]}>
-                    <Input placeholder='telephone' className = {style.input}/>
+                    <TInput length = {11} label = 'tel'/>
                 </Form.Item>)}
                 {accountType === ACCOUNT_TYPE.EMAIL && (
                 <Form.Item 
