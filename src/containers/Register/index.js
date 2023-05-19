@@ -11,7 +11,8 @@ const ACCOUNT_TYPE = {
 //Registration page
 
 const Register = () =>{
-    // form data
+    // form data 
+    const [form] = Form.useForm(); //get form object
     const [formData] = useState({
         name: '',
         tel:'',
@@ -28,22 +29,40 @@ const Register = () =>{
             setAccountType(ACCOUNT_TYPE.TEL);
         }
     }
+
+    const onClickNextStep = () => {
+        const validate = form.validateFields();
+        if (validate) {
+            const data = form.getFieldValue();
+            console.log(data);
+        }
+        console.log(validate);
+        
+    }
+
     return (
       <div>
         <Header />
         <div className={style.form}>
             <div className = {style.formTitle}>Create your account</div>
-            <Form initialValues={formData} className = {style.formContainer}>
-                <Form.Item name='name'>
+            <Form form = {form} initialValues={formData} className = {style.formContainer}>
+                <Form.Item 
+                    name='name'
+                    rules = {[{required:true, message:"Name should not be empty"}]}
+                    >
                     <Input placeholder='name' className = {style.input}/>
                 </Form.Item>
                 
                 {accountType === ACCOUNT_TYPE.TEL && (
-                <Form.Item name = 'tel'>
+                <Form.Item 
+                    name = 'tel'
+                    rules = {[{required:true, message:"Tel should not be empty"}]}>
                     <Input placeholder='telephone' className = {style.input}/>
                 </Form.Item>)}
                 {accountType === ACCOUNT_TYPE.EMAIL && (
-                <Form.Item name = 'email'>
+                <Form.Item 
+                    name = 'email'
+                    rules = {[{required:true, message:"Email should not be empty"}]}>
                     <Input placeholder='email' className = {style.input}/>
                 </Form.Item>)}
                 
@@ -58,7 +77,7 @@ const Register = () =>{
             </Form>
         </div>
         <div className={style.footer}>
-            <Button className={style.footerButton}>next</Button>
+            <Button className={style.footerButton} onClick={onClickNextStep}>next</Button>
         </div>
         </div>)
     }

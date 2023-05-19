@@ -1,5 +1,5 @@
 import { DatePicker } from 'antd-mobile';
-import style from './index.module.css';
+import style from './index.module.scss';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import datepickerIcon from '../../assets/datepicker-icon.svg';
@@ -15,21 +15,21 @@ const DatePickerInput = ({
     };
     return (<>
         <DatePicker
-            title='时间选择'
+            title='Time Selection'
             visible={visible}
             onClose={() => {
             setVisible(false);
             }}
-            max={now}
+            
             onConfirm={(val) => {
-             onChange(val)
+             onChange(moment(val).format('YYYYMMDD'));
             }}
         />
     
         <div className={style.birthdayInput} onClick = {onClickDatePicker}>
             <div className={style.birthdayTitleItem}>birthday</div>
             <div>
-                <span className={style.birthdayPlaceholder}>{value ? moment(value).format('YYYY/MM/DD'): 'y/m/d' }</span>
+                <span className={style.birthdayPlaceholder}>{value ? moment(value).format('YYYY/MM/DD'): 'YYYY/MM/DD' }</span>
                 <img className = {style.datepickerIcon} src = {datepickerIcon} alt = "datepickerIcon"></img>
             </div>
         </div>

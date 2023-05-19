@@ -1,4 +1,4 @@
-import './index.css';
+import './index.scss';
 import { Button,Input,Form,Dialog } from 'antd-mobile';
 import { loginService } from '../../services/login';
 

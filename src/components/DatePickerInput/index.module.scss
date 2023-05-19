@@ -1,5 +1,7 @@
+@import '../../common.module.scss';
+
 .birthdayInput {
-    composes: input from '/src/common.module.css';
+    composes: input from '/src/common.module.scss';
     margin-top: 10px;
 }
 
