@@ -1,7 +1,7 @@
 import style from './index.module.scss';
 import PropTypes from 'prop-types';
 import { Input } from 'antd-mobile';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 //富交互的Input
 const TInput = ({
@@ -12,7 +12,12 @@ const TInput = ({
 }) => {
     const [isFocused,setIsFocused] = useState(false);
     const [hide,setHide] = useState(false);
-
+    useEffect(() => {
+        if(value){
+            setIsFocused(true);
+            setHide(true)
+        }
+    },[]);
     const onFocus = () => {
         setIsFocused(true);
         setHide(true);
@@ -58,7 +63,14 @@ TInput.propTypes = {
     label: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     length: PropTypes.number.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
+}
+
+TInput.defaultProps = {
+    label: '',
+    value: undefined,
+    length: undefined,
+    onChange: () => {},
 }
 
 export default TInput;

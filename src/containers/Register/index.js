@@ -1,83 +1,43 @@
-import { Button, Form, Input } from 'antd-mobile';
 import { useState } from 'react';
 import Header from '@components/Header';
-import DatePickerInput from '@components/DatePickerInput';
-import style from './index.module.scss';
-import TInput from '@components/TInput'; 
+import OneStep from './components/OneStep';
+import TwoStep from './components/TwoStep';
 
-const ACCOUNT_TYPE = {
-    TEL: 'TEL',
-    EMAIL: 'EMAIL'
+//step sign
+const STEP = {
+    ONE: 1,
+    TWO: 2,
 }
 //Registration page
 
 const Register = () =>{
-    // form data 
-    const [form] = Form.useForm(); //get form object
-    const [formData] = useState({
-        name: '',
-        tel:'',
-        email:'',
-        birthday:'',
-        
-    });
-    const [accountType,setAccountType] = useState(ACCOUNT_TYPE.TEL);
-    const onAccountTypeChange = () => {
-        if (accountType === ACCOUNT_TYPE.TEL){
-            setAccountType(ACCOUNT_TYPE.EMAIL);
-            return;
-        } 
-        setAccountType(ACCOUNT_TYPE.TEL);
-        
+
+    const [step, setStep] = useState(STEP.ONE);
+    const [userInfo,setUserInfo] = useState();
+    
+    const gotoNextHandler = (data) => {
+        setUserInfo(data);
+        setStep(STEP.TWO);
     };
 
-    const onClickNextStep = () => {
-        const validate = form.validateFields();
-        if (validate) {
-            const data = form.getFieldValue();
-            console.log(data);
-        }
-        console.log(validate);
-        
-    }
+    const confirmRegisterHandler = (password) => {
+        console.log({
+            password,
+            ...userInfo,
+        })
+
+    };
 
     return (
       <div>
         <Header />
-        <div className={style.form}>
-            <div className = {style.formTitle}>Create your account</div>
-            <Form form = {form} initialValues={formData} className = {style.formContainer}>
-                <Form.Item name='name' rules = {[{required:true, message:"Name should not be empty"}]}>
-                    <TInput length = {5} label = 'name'/>
-                </Form.Item>
-                
-                {accountType === ACCOUNT_TYPE.TEL && (
-                <Form.Item 
-                    name = 'tel'
-                    rules = {[{required:true, message:"Tel should not be empty"}]}>
-                    <TInput length = {11} label = 'tel'/>
-                </Form.Item>)}
-                {accountType === ACCOUNT_TYPE.EMAIL && (
-                <Form.Item 
-                    name = 'email'
-                    rules = {[{required:true, message:"Email should not be empty"}]}>
-                    <Input placeholder='email' className = {style.input}/>
-                </Form.Item>)}
-                
-                <div className={style.changeTypeButton} onClick = {onAccountTypeChange}>
-                    {accountType === ACCOUNT_TYPE.EMAIL ? 'change to telephone': 'change to email'}
-                </div>
-                <div className={style.birthdayTitle}>birthday </div>
-                <div>This will not show up</div>
-                <Form.Item name = 'birthday'>
-                    <DatePickerInput />
-                </Form.Item>
-            </Form>
-        </div>
-        <div className={style.footer}>
-            <Button className={style.footerButton} onClick={onClickNextStep}>next</Button>
-        </div>
-        </div>)
-    }
+        {step === STEP.ONE && <OneStep gotoNextHandler = {gotoNextHandler}/>}
+        {step === STEP.TWO && <TwoStep userInfo={{}} confirmRegisterHandler = {confirmRegisterHandler}/>}
+        <TwoStep
+            userInfo={userInfo}
+            confirmRegisterHandler = {confirmRegisterHandler}
+        />
+      </div>);
+    };
 
     export default Register;
