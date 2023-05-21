@@ -3,10 +3,10 @@ import Header from '@components/Header';
 import OneStep from './components/OneStep';
 import TwoStep from './components/TwoStep';
 
-//step sign
+// steps
 const STEP = {
     ONE: 1,
-    TWO: 2,
+    TWO: 2
 }
 //Registration page
 
@@ -15,7 +15,7 @@ const Register = () =>{
     const [step, setStep] = useState(STEP.ONE);
     const [userInfo,setUserInfo] = useState();
     
-    const gotoNextHandler = (data) => {
+    const gotoNextStepHandler = (data) => {
         setUserInfo(data);
         setStep(STEP.TWO);
     };
@@ -31,12 +31,8 @@ const Register = () =>{
     return (
       <div>
         <Header />
-        {step === STEP.ONE && <OneStep gotoNextHandler = {gotoNextHandler}/>}
-        {step === STEP.TWO && <TwoStep userInfo={{}} confirmRegisterHandler = {confirmRegisterHandler}/>}
-        <TwoStep
-            userInfo={userInfo}
-            confirmRegisterHandler = {confirmRegisterHandler}
-        />
+        {step === STEP.ONE && <OneStep gotoNextStepHandler = {gotoNextStepHandler}/>}
+        {step === STEP.TWO && <TwoStep userInfo={userInfo} confirmRegisterHandler = {confirmRegisterHandler}/>}
       </div>);
     };
 

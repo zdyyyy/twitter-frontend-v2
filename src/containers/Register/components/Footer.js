@@ -17,7 +17,7 @@ const Footer = ({
     </div>
 );
 
-Footer.PropTypes = {
+Footer.propTypes = {
     onClickNextStep: PropTypes.func.isRequired,
     disabled: PropTypes.bool.isRequired,
     label: PropTypes.string.isRequired,

@@ -1,6 +1,5 @@
-import { Button, Form} from 'antd-mobile';
+import { Form} from 'antd-mobile';
 import { useState } from 'react';
-import Header from '@components/Header';
 import DatePickerInput from '@components/DatePickerInput';
 import style from '../index.module.scss';
 import TInput from '@components/TInput'; 
@@ -38,9 +37,7 @@ const OneStep = ({gotoNextStepHandler,}) =>{
         
         const validate = await form.validateFields();
         if (validate) {
-            // const data = form.getFieldValue();
-            console.log(data);
-            gotoNextStepHandler();
+            gotoNextStepHandler(validate);
         }
         console.log(validate);
         
