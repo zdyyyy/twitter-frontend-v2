@@ -70,7 +70,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "mock": "npx json-server --watch ./mock/db.json --routes ./mock/routes.json --port 3333"
+    "mock": "node ./mock/server.js"
   },
   "eslintConfig": {
     "extends": [

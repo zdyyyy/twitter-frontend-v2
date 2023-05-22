@@ -1,7 +1,7 @@
 import style from './index.module.scss';
 import PropTypes from 'prop-types';
 import { Input } from 'antd-mobile';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 //富交互的Input
 const TInput = ({
@@ -12,12 +12,7 @@ const TInput = ({
 }) => {
     const [isFocused,setIsFocused] = useState(false);
     const [hide,setHide] = useState(false);
-    useEffect(() => {
-        if(value){
-            setIsFocused(true);
-            setHide(true)
-        }
-    },[]);
+    
     const onFocus = () => {
         setIsFocused(true);
         setHide(true);
@@ -38,12 +33,12 @@ const TInput = ({
 
     };
 
-
-    return <div className = {hide ? style.tInputFocused : style.tInput}>
+    return (
+    <div className = {hide ? style.tInputFocused : style.tInput}>
         <div className={isFocused ? style.tInputFocused : style.label}>
             {label}
             {hide && length && <span className={style.labelRight}>
-                {value.length}
+                {value?.length}
                 /
                 {length}
             </span>}
@@ -57,6 +52,7 @@ const TInput = ({
             onChange={onChangeHandler}
         />
     </div>
+    );
 };
 
 TInput.propTypes = {

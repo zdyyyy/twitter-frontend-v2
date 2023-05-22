@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Toast } from 'antd-mobile';
 
 // http://google.com/user
 const domain = 'http://localhost:3333';
@@ -10,11 +11,9 @@ axios.interceptors.request.use((config) => ({
 }));
 
 // 对返回的结果，做拦截，主要有两部分: 数据转换和错误处理
-axios.interceptors.response.use((response) => {
-    console.log(response.data);
-    return response.data;
-}, (error) => Promise.reject(error)
-)
+axios.interceptors.response.use((response) => response.data,(err) =>{
+    Toast.show('Server fails to call')
+});
 
 //get 获取服务器
 export const get = (url) => axios.get(url);

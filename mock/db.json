@@ -1,18 +1,25 @@
 {
-    "user": [
-        {
-            "username": "hhhhhh",
-            "password": "12345",
-            "age": "23",
-            "address": "New York"
-        },
-        {
-            "username": "kkkkkk",
-            "password": "12345",
-            "age": "23",
-            "address": "New York"
-        }
-    ]
-            
+  "user": [
+    {
+      "password": "111",
+      "name": "11111",
+      "birthday": "20230522",
+      "email": "111@126.com",
+      "id": 1
+    },
+    {
+      "password": "111",
+      "name": "11111",
+      "birthday": "20230522",
+      "email": "111@126.com",
+      "id": 2
+    },
+    {
+      "password": "111",
+      "username": "zzzzz",
+      "birthday": "20230522",
+      "email": "zzzz@126.com",
+      "id": 3
+    }
+  ]
 }
-    

@@ -66,7 +66,7 @@ const OneStep = ({gotoNextStepHandler,}) =>{
         <div className={style.form}>
             <div className = {style.formTitle}>Create your account</div>
             <Form form = {form} initialValues={formData} onValuesChange={onValuesChange} className = {style.formContainer}>
-                <Form.Item name='name' rules = {[{required:true, message:"Name should not be empty"}]}>
+                <Form.Item name='username' rules = {[{required:true, message:"Name should not be empty"}]}>
                     <TInput length = {5} label = 'name'/>
                 </Form.Item>
                 
