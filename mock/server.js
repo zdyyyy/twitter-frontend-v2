@@ -58,7 +58,7 @@ fs.watch(watchedDir,(event,file) => {
                     return;
                 }
 
-                const isDatabaseDifferent = !_.isEqual(obj, server.disable.getState());
+                const isDatabaseDifferent = !_.isEqual(obj, server.db.getState());
                 if (isDatabaseDifferent){
                     webServer.destroy(() => {
                         [webServer,server] = start();

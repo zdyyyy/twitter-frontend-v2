@@ -16,7 +16,7 @@ const OneStep = ({gotoNextStepHandler,}) =>{
     // form data 
     const [form] = Form.useForm(); //get form object
     const [formData] = useState({
-        name: '',
+        username: '',
         tel:'',
         email:'',
         birthday:'',
