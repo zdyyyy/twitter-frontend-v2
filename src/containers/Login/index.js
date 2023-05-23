@@ -1,5 +1,6 @@
 
 import { Button,Input,Form,Dialog } from 'antd-mobile';
+import { Link } from 'react-router-dom'
 import { login } from '../../services/login';
 import style from './index.module.scss';
 import Header from '@components/Header';
@@ -28,7 +29,6 @@ const Login = () => {
 
   return (
     <>
-    <Header />
     <div className={style.login}>
         <div className={style.formTitle}>Twitter Login</div>
         <Form 
@@ -51,11 +51,11 @@ const Login = () => {
         </Form>
         <div className={style.goToRegister}>
           Do not have an account? 
-          <a href = "/"
-             target = "_blank"
+          <Link
+            to = "/register"
           >
             Register!
-          </a>
+          </Link>
         </div>
     </div>
     </>

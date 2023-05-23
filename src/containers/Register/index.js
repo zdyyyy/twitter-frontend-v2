@@ -38,13 +38,13 @@ const Register = () =>{
 
     };
 
-    const onClickClose = () => {
-        setStep(STEP.ONE);
-    }
+    // const onClickClose = () => {
+    //     setStep(STEP.ONE);
+    // }
 
     return (
       <div>
-        <Header onClickClose={onClickClose}/>
+        
         <Show visible = {step === STEP.ONE}>
             <OneStep gotoNextStepHandler = {gotoNextStepHandler}/>
         </Show>
