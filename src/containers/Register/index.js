@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import Header from '@components/Header';
+import { useEffect, useState } from 'react';
+import { Toast } from 'antd-mobile';
+import { useAppContext } from '@utils/context';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '@services/register';
+import Show from '@components/Show';
 import OneStep from './components/OneStep';
 import TwoStep from './components/TwoStep';
-import Show from '@components/Show';
-import { Toast } from 'antd-mobile';
 
 
 // steps
@@ -15,10 +16,25 @@ const STEP = {
 //Registration page
 
 const Register = () =>{
-
     const [step, setStep] = useState(STEP.ONE);
-    const [userInfo,setUserInfo] = useState({});
-    
+    const [userInfo, setUserInfo] = useState({});
+
+    const [,setStore] = useAppContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (step === STEP.ONE){
+            setStore({
+                closeHeaderHandler: () => navigate('/login'),
+            });
+        }
+        if (step === STEP.TWO){
+            setStore({
+                closeHeaderHandler: () => setStep(STEP.TWO),
+            });
+        }
+    }, [step]);
+
     const gotoNextStepHandler = (data) => {
         setUserInfo(data);
         setStep(STEP.TWO);
@@ -38,18 +54,18 @@ const Register = () =>{
 
     };
 
-    // const onClickClose = () => {
-    //     setStep(STEP.ONE);
-    // }
+    
 
     return (
       <div>
-        
         <Show visible = {step === STEP.ONE}>
             <OneStep gotoNextStepHandler = {gotoNextStepHandler}/>
         </Show>
-        <Show visible = {step === STEP.TWO}>
-            <TwoStep userInfo={userInfo} confirmRegisterHandler = {confirmRegisterHandler}/>
+        <Show visible = {step === STEP.TWO} isMount>
+            <TwoStep 
+            userInfo={userInfo} 
+            goToOneStepHandler={() => setStep(STEP.ONE)}
+            confirmRegisterHandler = {confirmRegisterHandler}/>
         </Show>
       </div>);
     };

@@ -1,14 +1,22 @@
-
-import { Button,Input,Form,Dialog } from 'antd-mobile';
+import { Button,Form,Dialog } from 'antd-mobile';
 import { Link } from 'react-router-dom'
 import { login } from '../../services/login';
 import style from './index.module.scss';
-import Header from '@components/Header';
 import TInput from '@components/TInput';
+import { useAppContext } from '@utils/context';
+import { useEffect } from 'react';
 
 const Login = () => {
   const [form] = Form.useForm();
 
+  const [, setStore] = useAppContext();
+  useEffect(() => {
+    setStore({
+        closeHeaderHandler: null,
+    });
+  },[])
+
+    
   const onSubmit = async () => {
     const values = await form.getFieldsValue()
     // const values = await form.validateFields()

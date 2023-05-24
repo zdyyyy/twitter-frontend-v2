@@ -3,15 +3,26 @@ import Footer from './Footer';
 import PropTypes from 'prop-types';
 import { Input } from 'antd-mobile';
 import { useState } from 'react';
+import { useAppContext } from '@utils/context';
 
 
 //第二步 添加密码
 const TwoStep = ({
     confirmRegisterHandler,
     userInfo,
+    goToOneStepHandler
 }) => {
     const [password,setPassword] = useState();
     const [disabled,setDisabled] = useState(true);
+
+    const [, setStore] = useAppContext();
+    const navigate = useNavigate();
+    useEffect(() => {
+        setStore({
+            closeHeaderHandler: goToOneStepHandler,
+        })
+    })
+
     const onConfirmRegister = () => {
         confirmRegisterHandler(password);
     };
@@ -65,6 +76,7 @@ const TwoStep = ({
 
 TwoStep.propTypes = {
     confirmRegisterHandler: PropTypes.func.isRequired,
+    goToOneStepHandler: PropTypes.func.isRequired,
     userInfo: PropTypes.shape({
         username: PropTypes.string,
         email: PropTypes.string,

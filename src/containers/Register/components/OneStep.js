@@ -1,10 +1,12 @@
 import { Form} from 'antd-mobile';
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
 import DatePickerInput from '@components/DatePickerInput';
 import style from '../index.module.scss';
 import TInput from '@components/TInput'; 
 import Footer from './Footer';
 import PropTypes from 'prop-types';
+import { useAppContext } from '@utils/context';
+import { useNavigate } from 'react-router-dom';
 
 const ACCOUNT_TYPE = {
     TEL: 'TEL',
@@ -24,6 +26,16 @@ const OneStep = ({gotoNextStepHandler,}) =>{
     });
     const [accountType,setAccountType] = useState(ACCOUNT_TYPE.TEL);
     const [footerButtonDisabled, setFooterButtonDisabled] = useState(true);
+
+    const [, setStore] = useAppContext();
+    const navigate = useNavigate();
+    useEffect(() => {
+        setStore({
+            closeHeaderHandler: () => navigate('/login')
+        })
+    })
+    
+    
     const onAccountTypeChange = () => {
         if (accountType === ACCOUNT_TYPE.TEL){
             setAccountType(ACCOUNT_TYPE.EMAIL);
