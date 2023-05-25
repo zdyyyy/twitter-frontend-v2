@@ -11,7 +11,7 @@ export const Show = ({
     children,
 }) => (
     <div style = {{display: visible ? 'block': 'none'}}>
-        {isMount || visible && children}
+        {(isMount || visible) && children}
     </div>
 
 );

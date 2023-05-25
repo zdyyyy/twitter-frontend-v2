@@ -30,7 +30,7 @@ const Register = () =>{
         }
         if (step === STEP.TWO){
             setStore({
-                closeHeaderHandler: () => setStep(STEP.TWO),
+                closeHeaderHandler: () => setStep(STEP.ONE),
             });
         }
     }, [step]);
@@ -53,8 +53,6 @@ const Register = () =>{
         console.log(">>>",res);
 
     };
-
-    
 
     return (
       <div>

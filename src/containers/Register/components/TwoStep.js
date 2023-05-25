@@ -2,9 +2,9 @@ import style from '../index.module.scss';
 import Footer from './Footer';
 import PropTypes from 'prop-types';
 import { Input } from 'antd-mobile';
-import { useState } from 'react';
+import { useEffect,useState } from 'react';
 import { useAppContext } from '@utils/context';
-
+import { useNavigate } from 'react-router-dom';
 
 //第二步 添加密码
 const TwoStep = ({
@@ -15,13 +15,6 @@ const TwoStep = ({
     const [password,setPassword] = useState();
     const [disabled,setDisabled] = useState(true);
 
-    const [, setStore] = useAppContext();
-    const navigate = useNavigate();
-    useEffect(() => {
-        setStore({
-            closeHeaderHandler: goToOneStepHandler,
-        })
-    })
 
     const onConfirmRegister = () => {
         confirmRegisterHandler(password);

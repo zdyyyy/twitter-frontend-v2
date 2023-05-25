@@ -31,10 +31,9 @@ const OneStep = ({gotoNextStepHandler,}) =>{
     const navigate = useNavigate();
     useEffect(() => {
         setStore({
-            closeHeaderHandler: () => navigate('/login')
-        })
-    })
-    
+            closeHeaderHandler: () => navigate('/login'),
+        });
+    },[]);
     
     const onAccountTypeChange = () => {
         if (accountType === ACCOUNT_TYPE.TEL){
