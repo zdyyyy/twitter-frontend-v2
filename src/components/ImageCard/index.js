@@ -12,10 +12,10 @@ import classNames from 'classnames';
 // 3 one left two right
 // 4 two left two right
 
-
-
 const ImageCard = ({
-    imgs
+    imgs,
+    likesCount,
+    commentsCount
 }) => {
     const imageViewRef = useRef();
     const [visible, setVisible] = useState(false);
@@ -52,14 +52,14 @@ const ImageCard = ({
                 setVisible(false)
             }}
         />
-        {visible && <Bar isBottom likesCount={likesCount} commentCount={commentCount}/>}
+        {visible && <Bar isBottom likesCount={likesCount} commentsCount={commentsCount}/>}
         </div>
     )
 };
 
 ImageCard.propTypes = {
     imgs: PropTypes.arrayOf(PropTypes.string),
-    commentCount: PropTypes.number.isRequired,
+    commentsCount: PropTypes.number.isRequired,
     likesCount: PropTypes.number.isRequired,
 }
 

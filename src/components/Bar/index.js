@@ -10,16 +10,15 @@ import classNames from 'classnames';
 
 
 //comments, share, likes
-const getBars = ({
-    
-    commentCount,
+const getBars = ({  
+    commentsCount,
     likesCount,
 }) =>[{
     key: 'msg',
     icon: (
       <div>
         <img className={style.icon} src = {msgSvg} alt = "" />
-        {commentCount > 0 && <span className={style.count}>{commentCount}</span>}
+        {commentsCount > 0 && <span className={style.count}>{commentsCount}</span>}
       </div>)
 },
 {
@@ -30,8 +29,8 @@ const getBars = ({
     key: 'heart',
     icon: (
         <div>
-            <img className={style.icon} src = {heartSvg} alt = "" />
-            {likesCount > 0 && <span className={style.count}>{likesCount}</span>}
+          <img className={style.icon} src = {heartSvg} alt = "" />
+          {likesCount > 0 && <span className={style.count}>{likesCount}</span>}
         </div>
     )
 },
@@ -39,10 +38,12 @@ const getBars = ({
     key: 'up',
     icon: <img className={style.icon} src = {upSvg} alt = "" />
 },]
+
+
 const Bar = ({
     isBottom,
     likesCount,
-    commentCount,
+    commentsCount,
 }) => {
     const [activeKey, setActiveKey] = useState();
     
@@ -52,11 +53,13 @@ const Bar = ({
     return (
         <div className={classNames({ 
             [style.container]: !isBottom, 
-            [style.containerBottom]: isBottom})}>
+            [style.containerBottom]: isBottom
+        })}
+        >
           <TabBar activeKey = {activeKey} onChange = {onChangeTabItem}>
             {getBars({
                 likesCount,
-                commentCount,
+                commentsCount,
             }).map((item) => (
               <TabBar.Item key = {item.key} icon = {item.icon} />
                 ))}
@@ -68,7 +71,7 @@ const Bar = ({
 
 Bar.propTypes = {
     isBottom: PropTypes.bool,
-    commentCount: PropTypes.number.isRequired,
+    commentsCount: PropTypes.number.isRequired,
     likesCount: PropTypes.number.isRequired,
 }
 
