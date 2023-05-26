@@ -1,8 +1,8 @@
-import { createContext } from 'react';
-import { useState, useEffect } from 'react';
+import Bar from '@components/Bar';
+import { useState, useRef } from 'react';
 import style from './index.module.scss';
 import { PropTypes } from 'prop-types';
-import { Image } from 'antd-mobile';
+import { Image, ImageViewer } from 'antd-mobile';
 import classNames from 'classnames';
 
 //image representation components
@@ -17,7 +17,8 @@ import classNames from 'classnames';
 const ImageCard = ({
     imgs
 }) => {
-    
+    const imageViewRef = useRef();
+    const [visible, setVisible] = useState(false);
     const getWrapper =() => {
         switch (imgs.length) {
             case 1:
@@ -30,23 +31,36 @@ const ImageCard = ({
                 return style.wrapper4;
             default:
                 return style.wrapper;
-            
-                
-
         }
+    };
+    const onClickImage = (index) => {
+        setVisible(true);
+        imageViewRef.current.swipeTo(index);
     }
+
     return (
     <div className={style.container}>
         <div className={classNames(style.wrapper,getWrapper())}>
-            {imgs.map((img,index) => (<Image fir = "cover" className={classNames(style.img,`img${index}`)} key = {classNames(img, index)} src = {img} alt="" />))}
+            {imgs.map((img,index) => (<Image onClick = {() => onClickImage(index)} fir = "cover" className={classNames(style.img,`img${index}`)} key = {classNames(img, index)} src = {img} alt="" />))}
         </div>
-        
+        <ImageViewer.Multi
+            ref = {imageViewRef}
+            images={imgs}
+            visible={visible}
+            defaultIndex={1}
+            onClose={() => {
+                setVisible(false)
+            }}
+        />
+        {visible && <Bar isBottom likesCount={likesCount} commentCount={commentCount}/>}
         </div>
     )
 };
 
 ImageCard.propTypes = {
-    imgs: PropTypes.arrayOf(PropTypes.string)
+    imgs: PropTypes.arrayOf(PropTypes.string),
+    commentCount: PropTypes.number.isRequired,
+    likesCount: PropTypes.number.isRequired,
 }
 
 ImageCard.defaultProps = {

@@ -6,10 +6,12 @@ import heartSvg from '@assets/heart.svg';
 import msgSvg from '@assets/msg.svg';
 import upSvg from '@assets/up.svg';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 
 //comments, share, likes
 const getBars = ({
+    
     commentCount,
     likesCount,
 }) =>[{
@@ -38,17 +40,19 @@ const getBars = ({
     icon: <img className={style.icon} src = {upSvg} alt = "" />
 },]
 const Bar = ({
+    isBottom,
     likesCount,
     commentCount,
 }) => {
     const [activeKey, setActiveKey] = useState();
     
-
     const onChangeTabItem = (key) => {
         setActiveKey(key);
     }
     return (
-        <div className={style.container}>
+        <div className={classNames({ 
+            [style.container]: !isBottom, 
+            [style.containerBottom]: isBottom})}>
           <TabBar activeKey = {activeKey} onChange = {onChangeTabItem}>
             {getBars({
                 likesCount,
@@ -59,11 +63,17 @@ const Bar = ({
           </TabBar>
         </div>
     );
+
 };
 
 Bar.propTypes = {
+    isBottom: PropTypes.bool,
     commentCount: PropTypes.number.isRequired,
     likesCount: PropTypes.number.isRequired,
+}
+
+Bar.defaultProps = {
+    isBottom: false,
 }
 
 export default Bar;
