@@ -27,7 +27,15 @@
 			"};",
 			"",
 			"export default $1;",
-			"",
+			""
+		],
+		"description": "Log output to console"
+	},
+	"insert proptype": {
+		"scope": "javascript,typescript",
+		"prefix": "pt",
+		"body": [
+			"import PropTypes from 'prop-types';"
 		],
 		"description": "Log output to console"
 	}

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import style from './index.module.scss'
 import moment from 'moment';
+import ImageCard from '@components/ImageCard';
+import Bar from '@components/Bar';
 
 const tweet = {
     "id":1, // tweet_id
@@ -60,10 +62,10 @@ const TweetCard = () => {
         {tweet.content}
         </div>
         <div className={style.photo}>
-          {}
+          <ImageCard imgs={tweet.photo_urls}/>
         </div>
         <div className={style.bar}>
-          {}
+          {<Bar commentCount={tweet.comments_count} likesCount={tweet.likes_count}/>}
         </div>
       </div>)
 };
