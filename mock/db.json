@@ -5,6 +5,7 @@
       "name": "11111",
       "birthday": "20230522",
       "email": "111@126.com",
+      "avatar_url": "https://images.alphacoders.com/131/1311951.jpg",
       "id": 1
     },
     {
@@ -12,6 +13,7 @@
       "name": "11111",
       "birthday": "20230522",
       "email": "111@126.com",
+      "avatar_url": "https://images.alphacoders.com/131/1311951.jpg",
       "id": 2
     },
     {
@@ -19,6 +21,7 @@
       "username": "zzzzz",
       "birthday": "20230522",
       "email": "zzzz@126.com",
+      "avatar_url": "https://images.alphacoders.com/131/1311951.jpg",
       "id": 3
     },
     {
@@ -26,6 +29,7 @@
       "username": "zzzzz",
       "birthday": "20230522",
       "email": "zzz@126.com",
+      "avatar_url": "https://images.alphacoders.com/131/1311951.jpg",
       "id": 4
     },
     {
@@ -33,6 +37,7 @@
       "username": "zzzzz",
       "birthday": "20230522",
       "email": "zzz@126.com",
+      "avatar_url": "https://images.alphacoders.com/131/1311951.jpg",
       "id": 5
     },
     {
@@ -40,6 +45,7 @@
       "username": "aaaa",
       "birthday": "20230524",
       "email": "aaaa@twitter.com",
+      "avatar_url": "https://images.alphacoders.com/131/1311951.jpg",
       "id": 6
     }
   ]

@@ -5,6 +5,7 @@ import style from './index.module.scss';
 import TInput from '@components/TInput';
 import { useAppContext } from '@utils/context';
 import { useEffect } from 'react';
+// import Cookies from 'js-cookie';
 
 const Login = () => {
   const [form] = Form.useForm();
@@ -27,6 +28,7 @@ const Login = () => {
         Dialog.alert({
           content: 'success',
         });
+        // Cookies.set('userId',res.data[0].id);
         return;
       }
       Dialog.alert({

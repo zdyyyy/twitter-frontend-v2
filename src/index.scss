@@ -5,9 +5,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff;
+  margin: 0;
 }
 
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 } */
+
+$tBlue: #1d9bf0;
+$tGray: #868a8c;
+$tGrayWhite: #cfd9de;
+$tFontColor: #536471;
+$tBorderColor: #eee;
+
+:root:root {
+  
+}
+
+.adm-text-area {
+  --placeholder-color: #536471;
+}

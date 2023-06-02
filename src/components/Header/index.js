@@ -6,16 +6,36 @@ import style from './index.module.scss';
 
 const Header = () => {
     const [store] = useAppContext();
-    return (
-      <div className={style.header}>
-        {store.closeHeaderHandler && (
-            <CloseOutline 
+    const result = [];
+    //login status
+    if (store.user) {
+      result.push(
+        <div className={style.backHeader}>
+          <img src = {store.user?.avatar_url} alt = "" className = {style.avatar} />
+        </div>
+      )
+      result.push(
+        <span className={style.title}>
+          {store.title}
+        </span>
+      )
+    }
+    // not login status
+    if (store.closeHeaderHandler){
+       result.push(
+          <CloseOutline 
               className = {style.closeIcon} 
               onClick = {store.closeHeaderHandler}
-        />
-        )}
-        <img src = {logo} alt = "twitter-logo" className={style.twitterLogo} />
+        />,
+        )
+       result.push(<img src = {logo} alt = "twitter-logo" className={style.twitterLogo} 
+        />);
+      }
+    return (
+      <div className={style.header}>
+        {result}
       </div>
+      
     );
 };
 

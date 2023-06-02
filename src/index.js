@@ -5,8 +5,8 @@ import Login from '@containers/Login';
 import App from '@containers/App';
 import Register from '@containers/Register';
 import Tweets from '@containers/Tweets';
-
-import './index.css';
+import Comments from '@containers/Comments';
+import './index.scss';
 import { CxtProvider } from '@utils/context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,6 +19,10 @@ root.render(
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="tweets" element={<Tweets />} />
+            <Route path="comments" element={<Comments />} />
+            <Route path="message" element={<Comments />} />
+            <Route path="notification" element={<Comments />} />
+            <Route path="search" element={<Comments />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -13,7 +13,7 @@
 }
 
 .formContainer {
-    composes: formContainer from "../../common.module.scss"
+    composes: formContainer from "../../index.scss"
 }
 
 .goToRegister {
@@ -24,5 +24,5 @@
 }
 
 .formTitle {
-    composes: formTitle from "../../common.module.scss"
+    composes: formTitle from "../../index.scss"
 }

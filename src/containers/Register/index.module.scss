@@ -1,12 +1,12 @@
-@import '../../common.module.scss';
+@import '../../index.scss';
 
 
 .formContainer {
-    composes: formContainer from '../../common.module.scss'
+    composes: formContainer from '../../index.scss'
 }
 
 .formTitle {
-    composes: formTitle from '../../common.module.scss'
+    composes: formTitle from '../../index.scss'
 }
 
 .form {
@@ -14,7 +14,7 @@
     }
 
 .input {
-    composes: input from '/src/common.module.scss'
+    composes: input from '/src/index.scss'
     // composes: common;
 }
 

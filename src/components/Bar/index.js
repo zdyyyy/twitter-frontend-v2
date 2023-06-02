@@ -7,6 +7,7 @@ import msgSvg from '@assets/msg.svg';
 import upSvg from '@assets/up.svg';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useNavigate } from 'react-router-dom';
 
 
 //comments, share, likes
@@ -46,6 +47,7 @@ const Bar = ({
     commentsCount,
 }) => {
     const [activeKey, setActiveKey] = useState();
+    const nav = useNavigate();
     
     const onChangeTabItem = (key) => {
         setActiveKey(key);
@@ -60,6 +62,7 @@ const Bar = ({
             {getBars({
                 likesCount,
                 commentsCount,
+                nav,
             }).map((item) => (
               <TabBar.Item key = {item.key} icon = {item.icon} />
                 ))}
