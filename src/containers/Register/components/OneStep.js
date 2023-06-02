@@ -1,4 +1,4 @@
-import { Form} from 'antd-mobile';
+import { Form } from 'antd-mobile';
 import { useEffect,useState } from 'react';
 import DatePickerInput from '@components/DatePickerInput';
 import style from '../index.module.scss';
@@ -76,7 +76,7 @@ const OneStep = ({gotoNextStepHandler,}) =>{
         {/* <Header /> */}
         <div className={style.form}>
             <div className = {style.formTitle}>Create your account</div>
-            <Form form = {form} initialValues={formData} onValuesChange={onValuesChange} className = {style.formContainer}>
+            <Form form = {form} initialValues = {formData} onValuesChange = {onValuesChange} className = {style.formContainer}>
                 <Form.Item name='username' rules = {[{required:true, message:"Name should not be empty"}]}>
                     <TInput length = {5} label = 'name'/>
                 </Form.Item>
