@@ -13,26 +13,44 @@ export const menus = [
     {
         key: 'search',
         link: '/search',
+        isMenu: true,
         icon: <img className={style.icon} src = {searchSvg} alt = "" />
     },
     {
-        key: 'tip',
+        key: 'notification',
         title: 'notification',
         link: '/notification',
+        isMenu: true,
         icon: <img className={style.icon} src = {tipSvg} alt = "" />
     },
     {
         key: 'message',
         title: 'message',
         link: '/message',
+        isMenu: true,
         icon: <img className={style.icon} src = {messageSvg} alt = "" />
     },
+    {
+        key: 'comment',
+        title: 'response',
+        link: '/comment',
+        hideHeader: true,
+    },
+    {
+        key: 'createTweet',
+        title: 'Tweet',
+        link: '/createTweet',
+        hideHeader: true,
+    }
 ];
 
-export const getMenuByKey = (key) => {
-    return menus.find((item) => item.key === key);
-}
+export const getMenuByKey = (key) => menus.find((item) => item.key === 
+key);
 
-export const getMenuByLink = (link) => {
-    return menus.find((item) => item.link === link);
-}
+
+export const getMenuByLink = (link) => menus.find((item) => link.indexOf
+(item.link) > -1);
+
+
+export const includeMenu = (link) => menus.some((item) => item.link === 
+link);

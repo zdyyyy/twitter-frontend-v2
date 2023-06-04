@@ -1,16 +1,16 @@
 import { TabBar } from 'antd-mobile';
 import { useState, useEffect} from 'react';
 import { useAppContext } from '@utils/context';
-import { useCurMenus, useGoto } from '@utils/hooks';
+import { useCurMenus, useGoto, useIncludeMenu } from '@utils/hooks';
 import { getMenuByKey, menus } from '@utils/constants';
 import style from './index.module.scss';
 
 
 const Bottom = () => {
-    const [activeKey, setActiveKey] = useState();
     const [, setStore] = useAppContext();
     const go = useGoto();
     const menu = useCurMenus();
+
 
     useEffect(() => {
         if (menu) {
@@ -26,12 +26,16 @@ const Bottom = () => {
             title: mu.title,
         });
         go(key)
+    };
+
+    if (!menu.hideHeader) {
+        return null;
     }
     return (
         <div className={style.container}>
           <TabBar onChange = {onChangeTabItem}>
             {menus.map((item) => (
-              <TabBar.Item key = {item.key} icon = {item.icon} />
+              item.isMenu && <TabBar.Item key = {item.key} icon = {item.icon} />
                 ))}
           </TabBar>
         </div>

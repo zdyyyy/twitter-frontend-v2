@@ -1,11 +1,14 @@
 import { Steps } from 'antd-mobile';
-import { CheckCircleFill, ClockCircleFill } from 'antd-mobile-icons';
-// import { Step } from 'antd-mobile/es/components/steps/step';
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 import style from './index.module.scss';
 import { useAppContext } from '@utils/context';
 import { TextArea } from 'antd-mobile';
+import TButton from '@components/TButton';
+import Header from '@components/Header';
+import { createComment } from '@services/comment'
+import { useParams } from 'react-router-dom';
+import { useGoto } from '@utils/hooks';
 
 const { Step } = Steps;
 
@@ -49,12 +52,36 @@ const defaultTweet = {
 const Comments = () => {
     const [store] = useAppContext();
     const [data, setDate] = useState(defaultTweet);
-
+    const [text, setText] = useState('');
+    const params = useParams();
+    const go = useGoto();
+    // console.log('params',params.id)
     useEffect(() => {
         setDate(defaultTweet);
     },[])
+
+    const onClickReply = () => {
+      createComment({
+        content: text,
+        tweet_id: params.id,
+      }).then((res) => {
+        if (res?.success) {
+          Toast.show('Response Successfully');
+          go();
+          return;
+        }
+        Toast.show('fail to response');
+      })
+
+    };
+    const onChangeText = (v) => {
+      setText(v);
+    }
     return (
      <div className={style.container}>
+        <Header>
+          <TButton disabled = {text.length === 0} onClick={onClickReply}>Response</TButton>
+        </Header>
         <Steps
            direction='vertical'
            current={1}
@@ -94,7 +121,7 @@ const Comments = () => {
            }
            title = {(
             <div>
-                <TextArea className = {style.text} placeholder = "Your Response"/>
+                <TextArea value = {text} onChange={onChangeText} className = {style.text} placeholder = "Your Response"/>
             </div>
            )}
            description = {(

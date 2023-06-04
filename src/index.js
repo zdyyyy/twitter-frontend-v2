@@ -8,6 +8,7 @@ import Tweets from '@containers/Tweets';
 import Comments from '@containers/Comments';
 import './index.scss';
 import { CxtProvider } from '@utils/context';
+import CreateTweet from '@containers/CreateTweet';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,7 +20,8 @@ root.render(
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="tweets" element={<Tweets />} />
-            <Route path="comments" element={<Comments />} />
+            <Route path="comments/:id" element={<Comments />} />
+            <Route path="createTweet" element={<CreateTweet />} />
             <Route path="message" element={<Comments />} />
             <Route path="notification" element={<Comments />} />
             <Route path="search" element={<Comments />} />
