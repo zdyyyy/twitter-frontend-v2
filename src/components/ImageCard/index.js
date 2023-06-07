@@ -4,6 +4,7 @@ import style from './index.module.scss';
 import { PropTypes } from 'prop-types';
 import { Image, ImageViewer } from 'antd-mobile';
 import classNames from 'classnames';
+import { OBJECT_KEYS } from '@components/Bar/constants';
 
 //image representation components
 //max 4 pic
@@ -41,7 +42,7 @@ const ImageCard = ({
     return (
     <div className={style.container}>
         <div className={classNames(style.wrapper,getWrapper())}>
-            {imgs.map((img,index) => (<Image onClick = {() => onClickImage(index)} fir = "cover" className={classNames(style.img,`img${index}`)} key = {classNames(img, index)} src = {img} alt="" />))}
+            {imgs.map((img,index) => (<Image onClick = {() => onClickImage(index)} fit = "cover" className={classNames(style.img,`img${index}`)} key = {classNames(img, index)} src = {img} alt="" />))}
         </div>
         <ImageViewer.Multi
             ref = {imageViewRef}
@@ -52,7 +53,8 @@ const ImageCard = ({
                 setVisible(false)
             }}
         />
-        {visible && <Bar isBottom likesCount={likesCount} commentsCount={commentsCount}/>}
+        {visible && <Bar isBottom likesCount={likesCount} commentsCount=
+        {commentsCount} type={OBJECT_KEYS.TWEET}/>}
         </div>
     )
 };

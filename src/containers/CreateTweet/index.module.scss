@@ -1,3 +1,4 @@
+@import '../../index.scss';
 .content {
     padding: 20px;
 }
@@ -14,7 +15,7 @@
 }
 
 .right {
-    width: cacl(100%-50px);
+    width: calc(100% - 50px);
     display: inline-block;
     padding-top: 10px;
     box-sizing: border-box;
@@ -23,4 +24,7 @@
 .button {
     border-top: solid 1px #eff3f4;
     padding-top: 10px;
+    width: 20px;
+    height: 20px;
+    
 }

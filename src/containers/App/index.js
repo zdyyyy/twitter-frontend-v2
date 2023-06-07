@@ -4,11 +4,11 @@ import Bottom from '@components/Bottom';
 import { useAppContext } from '@utils/context';
 import { useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { getSuggestedQuery } from '@testing-library/react';
 import style from './index.module.scss';
 import { Toast } from 'antd-mobile';
-import { useCurMenus } from '@utils/hooks';
 import CreateButton from '@components/CreateButton';
+import { useCurMenus } from '@utils/hooks';
+import { getUser } from '@services/login';
 
 const App = () => {
     const [, setStore] = useAppContext();
@@ -23,12 +23,13 @@ const App = () => {
                 nav('/login');
                 return;
             }
-            const res = await getSuggestedQuery(userId);
+            const res = await getUser(userId);
+            // console.log('res',res.data)
             if (res.data){
                 setStore({
                     user: res.data,
                 });
-                if (location.pathname === 'login'){
+                if (location.pathname === '/login'){
                     nav('/tweets');
                 }
                 return;
@@ -41,7 +42,7 @@ const App = () => {
     const onClickCreateTweet = () => {
         nav('/createTweet');
     }
-    // console.log('menu',menu);
+    console.log('menu',menu);
     return (
     <div className={style.container}>
         {!menu.hideHeader && <Header />}

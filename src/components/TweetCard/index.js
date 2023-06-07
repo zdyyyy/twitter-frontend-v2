@@ -3,6 +3,8 @@ import style from './index.module.scss'
 import moment from 'moment';
 import ImageCard from '@components/ImageCard';
 import Bar from '@components/Bar';
+import { useGoto } from '@utils/hooks';
+import { OBJECT_KEYS } from '@components/Bar/constants';
 
 const tweet = {
     "id":1, // tweet_id
@@ -10,7 +12,7 @@ const tweet = {
         "id":2, // tweet_user_id
         "username": "EpiGaming", // tweet_user_name
         "nickname": "EpiGaming", // tweet_user_nickname
-        "avatar_url": "/test1.jpg" // tweet_user_avatar_address
+        "avatar_url": "https://images.alphacoders.com/131/1311951.jpg" // tweet_user_avatar_address
     }, // tweet_user_info
     "comments": [
         {
@@ -20,7 +22,7 @@ const tweet = {
                 "id":1, //comment_tweet_user_id
                 "username":"admin", //comment_tweet_username
                 "nickname":null, //comment_tweet_user_nickname
-                "avatar_url":null,//comment_tweet_user_avatar_address
+                "avatar_url":'https://images6.alphacoders.com/131/1311352.png',//comment_tweet_user_avatar_address
             }, //comment_tweet_user_info
             "content":"Test!",//comment_content
             "created_at":"2021-12-22T15:03:52.662052Z",//comments_created_at
@@ -41,6 +43,7 @@ const tweet = {
 }
 const TweetCard = () => {
     const [data,setDate] = useState();
+    const go = useGoto();
     useEffect(() => {
         console.log('data',data);
         setDate([]);
@@ -61,7 +64,7 @@ const TweetCard = () => {
                 {moment(tweet.created_at).format('MM minutes')}
             </div>
         </div>
-        <div className={style.content}>
+        <div className={style.content} onClick = {() =>go('tweet',{id: tweet.id})}>
         {tweet.content}
         </div>
         <div className={style.photo}>
@@ -70,7 +73,12 @@ const TweetCard = () => {
           likesCount = {tweet.likes_count}/>
         </div>
         <div className={style.bar}>
-          <Bar id = {tweet.id} commentsCount={tweet.comments_count} likesCount={tweet.likes_count}/>
+          <Bar 
+            id = {tweet.id} 
+            commentsCount={tweet.comments_count} 
+            likesCount={tweet.likes_count}
+            type={OBJECT_KEYS.TWEET}
+        />
         </div>
       </div>)
 };

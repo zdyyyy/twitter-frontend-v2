@@ -1,4 +1,5 @@
-{
+{ 
+  "likes": [],
   "user": [
     {
       "password": "111",
@@ -49,5 +50,6 @@
       "id": 6
     }
   ],
-  "comments": []
+  
+  "tweets": []
 }

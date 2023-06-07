@@ -4,3 +4,4 @@ export const login = (username,password) => get(`/api/login/${username}/${passwo
 
 export const register = (username,password) => post(`/user/${username}/${password}`);
 
+export const getUser = (id) => get(`/api/users/${id}`);

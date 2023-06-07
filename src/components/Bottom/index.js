@@ -1,7 +1,7 @@
 import { TabBar } from 'antd-mobile';
-import { useState, useEffect} from 'react';
+import { useEffect} from 'react';
 import { useAppContext } from '@utils/context';
-import { useCurMenus, useGoto, useIncludeMenu } from '@utils/hooks';
+import { useCurMenus, useGoto } from '@utils/hooks';
 import { getMenuByKey, menus } from '@utils/constants';
 import style from './index.module.scss';
 
@@ -10,7 +10,7 @@ const Bottom = () => {
     const [, setStore] = useAppContext();
     const go = useGoto();
     const menu = useCurMenus();
-
+    console.log('menu',menu);
 
     useEffect(() => {
         if (menu) {

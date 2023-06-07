@@ -1,12 +1,11 @@
-import { Steps } from 'antd-mobile';
+import { Steps, TextArea, Toast } from 'antd-mobile';
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 import style from './index.module.scss';
 import { useAppContext } from '@utils/context';
-import { TextArea } from 'antd-mobile';
 import TButton from '@components/TButton';
 import Header from '@components/Header';
-import { createComment } from '@services/comment'
+import { createComment } from '@services/comments'
 import { useParams } from 'react-router-dom';
 import { useGoto } from '@utils/hooks';
 
@@ -18,7 +17,7 @@ const defaultTweet = {
             id:2, // tweet_user_id
             username: "EpiGaming", // tweet_user_name
             nickname: "EpiGaming", // tweet_user_nickname
-            avatar_url: "/test1.jpg" // tweet_user_avatar_address
+            avatar_url: "https://images.alphacoders.com/131/1311951.jpg" // tweet_user_avatar_address
         }, // tweet_user_info
         comments: [
             {
@@ -28,7 +27,7 @@ const defaultTweet = {
                     id:1, //comment_tweet_user_id
                     username:"admin", //comment_tweet_username
                     nickname:null, //comment_tweet_user_nickname
-                    avatar_url:null,//comment_tweet_user_avatar_address
+                    avatar_url:'https://images6.alphacoders.com/131/1311352.png',//comment_tweet_user_avatar_address
                 }, //comment_tweet_user_info
                 content:"Test!",//comment_content
                 created_at:"2021-12-22T15:03:52.662052Z",//comments_created_at
