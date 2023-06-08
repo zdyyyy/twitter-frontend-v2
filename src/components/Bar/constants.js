@@ -5,6 +5,7 @@ import msgSvg from '@assets/msg.svg';
 import upSvg from '@assets/up.svg';
 import { LinkOutline } from 'antd-mobile-icons';
 
+
 import style from './index.module.scss'
 
 export const BAR_KEYS = {
@@ -36,7 +37,7 @@ export const getBars = ({
     return [{
     key: BAR_KEYS.MSG,
     icon: (
-      <div onClick = {() => nav(`/comment/${id}`)}>
+      <div onClick = {() => nav(`/comments/${id}`)}>
         <img className={style.icon} src = {msgSvg} alt = "" />
         {commentsCount > 0 && <span className={style.count}>{commentsCount}</span>}
       </div>)
@@ -60,6 +61,10 @@ export const getBars = ({
     },];
 };
 
+export const ACTION_KEYS = {
+    COPY: 'copy',
+    CANCEL: 'cancel',
+}
 
 export const ACTIONS  = [
     { text: 

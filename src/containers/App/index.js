@@ -17,14 +17,15 @@ const App = () => {
     const menu = useCurMenus();
     useEffect(() => {
         const init = async () => {
-            const userId = Cookies.get('userId');
+            // const userId = Cookies.get('userId');
+            const userId = Cookies.get('id');
             if (!userId){
                 Toast.show('Please login again');
                 nav('/login');
                 return;
             }
             const res = await getUser(userId);
-            // console.log('res',res.data)
+            console.log('res',res.data)
             if (res.data){
                 setStore({
                     user: res.data,

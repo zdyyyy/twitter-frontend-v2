@@ -39,8 +39,8 @@ export const menus = [
     {
         key: 'comment',
         // title: 'response',
-        // link: '/comment/:id',
-        link: '/comment',
+        link: '/comments/:id',
+        // link: '/comments',
         hideHeader: true,
     },
     {
@@ -54,7 +54,7 @@ export const menus = [
 export const getMenuByKey = (key) => menus.find((item) => item.key === 
 key);
 
-//matchPath('/comment/:id','/comment/1') => True
+//matchPath('/comments/:id','/comments/1') => True
 export const getMenuByLink = (link) => menus.find((item) => matchPath(item.link,link));
 
 

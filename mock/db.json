@@ -1,5 +1,16 @@
-{ 
-  "likes": [],
+{
+  "likes": [
+    {
+      "content_type": "tweet",
+      "object_id": 1,
+      "id": 1
+    },
+    {
+      "content_type": "tweet",
+      "object_id": 1,
+      "id": 2
+    }
+  ],
   "user": [
     {
       "password": "111",
@@ -48,8 +59,63 @@
       "email": "aaaa@twitter.com",
       "avatar_url": "https://images.alphacoders.com/131/1311951.jpg",
       "id": 6
+    },
+    {
+      "password": "123",
+      "username": "222",
+      "birthday": "20230607",
+      "email": "2@126.com",
+      "id": 7
     }
   ],
-  
+  "feeds": [
+    {
+      "id":2,
+      "created_at": "2022-02-15T04:38:34.097094Z",
+      "user": 1,
+      "tweet": {
+        "id": 6,
+        "user": {
+          "id":1,
+          "username": "admin",
+          "nickname": "aaa",
+          "avatar_url": "https://images.alphacoders.com/131/1311951.jpg"
+        },
+        "created_at":"2022-02-15T04:38:34.078407Z",
+        "content": "I wanna make a test",
+        "comments_count": 0,
+        "likes_count": 0,
+        "has_liked": false,
+        "photo_urls": ["https://images.alphacoders.com/131/1311951.jpg",
+                       "https://images.alphacoders.com/131/1311951.jpg",
+                       "https://images.alphacoders.com/131/1311951.jpg",
+                       "https://images.alphacoders.com/131/1311951.jpg"]
+      }
+    },
+    {
+      "id":1,
+      "created_at": "2022-02-15T04:38:34.097094Z",
+      "user": 1,
+      "tweet": {
+        "id": 6,
+        "user": {
+          "id":1,
+          "username": "admin",
+          "nickname": "bbb",
+          "avatar_url": "https://images.alphacoders.com/131/1311951.jpg"
+        },
+        "created_at":"2022-02-15T04:38:34.078407Z",
+        "content": "I wanna make a test",
+        "comments_count": 0,
+        "likes_count": 0,
+        "has_liked": false,
+        "photo_urls": ["https://images.alphacoders.com/131/1311951.jpg",
+                       "https://images.alphacoders.com/131/1311951.jpg",
+                       "https://images.alphacoders.com/131/1311951.jpg",
+                       "https://images.alphacoders.com/131/1311951.jpg"]
+      }
+    }
+
+  ],
   "tweets": []
 }

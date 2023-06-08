@@ -19,8 +19,8 @@ const Login = () => {
 
     
   const onSubmit = async () => {
-    const values = await form.getFieldsValue()
-    // const values = await form.validateFields()
+    // const values = await form.getFieldsValue()
+    const values = await form.validateFields()
     if (values) {
       const res = await login(values.username,values.password);
       console.log('>>',res);
