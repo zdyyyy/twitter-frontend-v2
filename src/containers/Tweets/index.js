@@ -1,6 +1,7 @@
 import TweetCard from '@components/TweetCard';
 import { getFeeds } from '@services/tweets';
-import { PullToRefresh } from 'antd-mobile';
+import { useDownLoad } from '@utils/hooks';
+import { InfiniteScroll, PullToRefresh } from 'antd-mobile';
 import { useState, useEffect } from 'react';
 import { CellMeasurer, CellMeasurerCache, List, WindowScroller } from 'react-virtualized';
 import style from './index.module.scss';
@@ -90,6 +91,7 @@ const noRowsRenderer = () => 'Loading...';
 
 const Tweets = () => {
     const [data, setData] = useState([]);
+    const [hasMore,setHasMore] = useState(true);
     useEffect(() => {
       const init = async () => {
         const res = await getFeeds();
@@ -100,7 +102,6 @@ const Tweets = () => {
     
     
     const rowRenderer = ({ key,style:sy,index, parent }) => (
-    <div style = {sy} key = {key}>
       <CellMeasurer
         cache = {cache}
         columnIndex = {0}
@@ -114,8 +115,14 @@ const Tweets = () => {
         </div>
         )}
       </CellMeasurer>
-      
-    </div>);
+    );
+    const handleLoadMore = async () => {
+      const res = await getFeeds();
+      setData((d) => [...d,...res]);
+      if (res.length === 0){
+        setHasMore(false);
+      }
+    }
     return (
       <div className={style.container}>
         <PullToRefresh
@@ -123,7 +130,7 @@ const Tweets = () => {
              const res = await getFeeds();
              setData((d) => [...d,...res]);
           }}
-        ></PullToRefresh>
+        >
         <WindowScroller>
             {({
               height,width,isScrolling, registerChild,onChildScroll, scrollTop,
@@ -146,7 +153,8 @@ const Tweets = () => {
               </div>
             )}
             </WindowScroller>
-        
+          </PullToRefresh>
+            <InfiniteScroll loadMore = {handleLoadMore} hasMore = {hasMore} />
       </div>)
 };
 export default Tweets;
