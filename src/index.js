@@ -10,10 +10,10 @@ import './index.scss';
 import { CxtProvider } from '@utils/context';
 import CreateTweet from '@containers/CreateTweet';
 import Tweet from '@containers/Tweet';
+import My from '@containers/My';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
     <CxtProvider>
       <BrowserRouter>
         <Routes>
@@ -27,12 +27,12 @@ root.render(
             <Route path="message" element={<Comments />} />
             <Route path="notification" element={<Comments />} />
             <Route path="search" element={<Comments />} />
+            <Route path="my" element={<My />} />
             <Route path="tweet/:id" element={<Tweet />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </CxtProvider>
-  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function
